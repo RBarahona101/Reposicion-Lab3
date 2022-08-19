@@ -1,6 +1,7 @@
 package lab3p2_rigobertobarahona;
 
 import java.util.ArrayList;
+
 public class Rey extends Torre{
     private String reino;
 
@@ -30,7 +31,8 @@ public class Rey extends Torre{
 
     @Override
     public String toString() {
-        return "Vida: " + vida + "\n"
+        return "Rey" + "\n" 
+        + "Vida: " + vida + "\n"
         + "Reino: " + reino;  
     }
     

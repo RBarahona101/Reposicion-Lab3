@@ -30,6 +30,21 @@ public class Jugador {
         }
         return cont;
     }
+    public boolean verifyKing(int indice) {
+        boolean rey = false;
+        if (towers.get(indice) instanceof Rey){
+            rey = true;
+        }
+        return rey;
+    }
+    public boolean verifyArcher(int indice) {
+        boolean archer = false;
+        if (towers.get(indice) instanceof Arquera){
+            archer = true;
+        }
+        return archer;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -64,6 +79,31 @@ public class Jugador {
         String temp = "";
         for (int i = 0; i < cards.size(); i++) {
             temp += "" + i + " - " + cards.get(i) + "\n";
+        }
+        return temp;
+    }
+    public String listarTorres() {
+        String temp = "";
+        for (int i = 0; i < towers.size(); i++) {
+            temp += "" + i + " - " + towers.get(i) + "\n";
+        }
+        return temp;
+    }
+    public String listarArqueras(){
+        String temp = "";
+        for (int i = 0; i < towers.size(); i++){
+            if (towers.get(i) instanceof Arquera){
+               temp += "" + i + " - " + towers.get(i) + "\n";
+            }
+        }
+        return temp;
+    }
+    public String listarRey(){
+        String temp = "";
+        for (int i = 0; i < towers.size(); i++) {
+            if (towers.get(i) instanceof Rey) {
+                temp += "" + i + " - " + towers.get(i) + "\n";
+            }
         }
         return temp;
     }
