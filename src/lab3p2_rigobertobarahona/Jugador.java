@@ -76,21 +76,21 @@ public class Jugador {
     }
     
     public String listarCartas() {
-        String temp = "";
+        String temp = "Cartas" + "\n" ;
         for (int i = 0; i < cards.size(); i++) {
             temp += "" + i + " - " + cards.get(i) + "\n";
         }
         return temp;
     }
     public String listarTorres() {
-        String temp = "";
+        String temp = "Torres" + "\n";
         for (int i = 0; i < towers.size(); i++) {
             temp += "" + i + " - " + towers.get(i) + "\n";
         }
         return temp;
     }
     public String listarArqueras(){
-        String temp = "";
+        String temp = "Arqueras" + "\n"; 
         for (int i = 0; i < towers.size(); i++){
             if (towers.get(i) instanceof Arquera){
                temp += "" + i + " - " + towers.get(i) + "\n";
@@ -99,7 +99,7 @@ public class Jugador {
         return temp;
     }
     public String listarRey(){
-        String temp = "";
+        String temp = "Rey" + "\n";
         for (int i = 0; i < towers.size(); i++) {
             if (towers.get(i) instanceof Rey) {
                 temp += "" + i + " - " + towers.get(i) + "\n";
