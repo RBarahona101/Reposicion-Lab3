@@ -11,7 +11,25 @@ public class Jugador {
         
     }
 
-
+    public int getArcherTowerCant (){
+        int cont = 0;
+        for (Object temp : towers) {
+            if (temp instanceof Arquera) {
+                cont++;
+            }
+        }
+        return cont;
+    }
+    
+    public int getKingTowerCant (){
+        int cont = 0;
+        for (Object temp : towers) {
+            if (temp instanceof Rey){
+                cont++;
+            }
+        }
+        return cont;
+    }
     public String getNombre() {
         return nombre;
     }
@@ -45,7 +63,7 @@ public class Jugador {
     public String listarCartas() {
         String temp = "";
         for (int i = 0; i < cards.size(); i++) {
-            temp += "" + cards.indexOf(i) + cards.get(i) + "\n";
+            temp += "" + i + " - " + cards.get(i) + "\n";
         }
         return temp;
     }

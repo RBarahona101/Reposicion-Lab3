@@ -94,8 +94,8 @@ public class Lab3P2_RigobertoBarahona {
                                     posible = false;
                                     break;
                                 }
-                            }
-                        } else {
+                            } // Switch
+                        } else { //Is Empty
                             System.out.println("1) Crear Nueva");
                             System.out.println("2) Agregar Existente");
                             System.out.print("Seleccionar opcion: ");
@@ -113,7 +113,6 @@ public class Lab3P2_RigobertoBarahona {
                                     }
                                     System.out.print("Velocidad: ");
                                     int velocidad = lea.nextInt();
-
                                     System.out.println("1) Especial");
                                     System.out.println("2) Epicas");
                                     System.out.println("3) Legendarias");
@@ -145,8 +144,8 @@ public class Lab3P2_RigobertoBarahona {
                                             posible = false;
                                             break;
                                         }
-                                    }
-                                }
+                                    } //Opcion 3
+                                } // Case 1
                                 case 2: {
                                     System.out.println("Exitos");
                                     break;
@@ -185,12 +184,220 @@ public class Lab3P2_RigobertoBarahona {
                     }
                     break;
                 }
-                case 3: {
-                    System.out.print("Vida: ");
-                    int vida = lea.nextInt();
-                    System.out.println("");
-                }
 
+                case 3: {
+                    if (jugador.isEmpty() ){
+                        System.out.println("No hay jugadores");
+                    }else{
+                        System.out.print("Vida: ");
+                        int vida = lea.nextInt();
+                        System.out.println("Ataque: ");
+                        int ataque = lea.nextInt();
+                        torre.add(new Arquera(vida, ataque));
+                        System.out.println();
+                        String salida = "";
+                        for (Object temp : jugador) {
+                            if (temp instanceof Jugador) {
+                                salida += jugador.indexOf(temp) + " - " + temp + "\n";
+                            }
+                        }
+                        System.out.println(salida);
+                        System.out.print("Indice de jugador a agregar: ");
+                        int indice1 = lea.nextInt();
+
+                        salida = "";
+                        for (Object temp : torre) {
+                            if (temp instanceof Arquera) {
+                                salida += torre.indexOf(temp) + " - " + temp + "\n";
+                            }
+                        }
+                        System.out.println(salida);
+                        System.out.print("Indice de Torre a agregar: ");
+                        int indice2 = lea.nextInt();
+
+                        int limite = ( (Jugador) jugador.get(indice1) ).getArcherTowerCant();
+
+                        if (limite > 2){
+                            ((Jugador) jugador.get(indice1)).getTowers().add( (Torre) torre.get(indice2) );
+                            System.out.println("Agregada exitosamente");
+                        }else{
+                            System.out.println("El jugador ya tiene 2 torres arqueras");
+                        }
+                    }
+                    break;
+                }
+                case 4: {
+                    if (jugador.isEmpty()){
+                        System.out.println("No hay jugadores");
+                    }else{
+                        System.out.print("Vida: ");
+                        int vida = lea.nextInt();
+                        System.out.print("Reino: ");
+                        Scanner lea = new Scanner(System.in);
+                        String reino = lea.nextLine();
+                        torre.add(new Rey(vida, reino));
+
+                        System.out.println();
+
+                        String salida = "";
+                        for (Object temp : jugador) {
+                            if (temp instanceof Jugador) {
+                                salida += jugador.indexOf(temp) + " - " + temp + "\n";
+                            }
+                        }
+                        System.out.println(salida);
+                        System.out.print("Indice de jugador a agregar: ");
+                        int indice1 = lea.nextInt();
+
+                        salida = "";
+                        for (Object temp : torre) {
+                            if (temp instanceof Rey) {
+                                salida += torre.indexOf(temp) + " - " + temp + "\n";
+                            }
+                        }
+                        System.out.println(salida);
+                        System.out.print("Indice de Torre a agregar: ");
+                        int indice2 = lea.nextInt();
+
+                        int limite = ((Jugador) jugador.get(indice1)).getKingTowerCant();
+
+                        if (limite > 1) {
+                            ((Jugador) jugador.get(indice1)).getTowers().add( (Torre) torre.get(indice2) );
+                            System.out.println("Agregada exitosamente");
+                        } else {
+                            System.out.println("El jugador ya tiene a su rey");
+                        }
+                    }
+                    break;
+                }
+                case 5: {
+                    if (jugador.isEmpty() ){
+                        System.out.println("No Hay Jugadores");
+                    }else{
+                        String salida = "";
+                        for (Object temp : jugador) {
+                            if (temp instanceof Jugador) {
+                                salida += jugador.indexOf(temp) + " - " + temp + "\n";
+                            }
+                        }
+                        System.out.println(salida);
+                        System.out.println("Indice de Jugador a Cambiar su nombre: ");
+                        int indice = lea.nextInt();
+                        Scanner lea = new Scanner(System.in);
+                        System.out.print("Ingresar nuevo nombre: ");
+                        String name = lea.nextLine();
+                        ( (Jugador) jugador.get(indice) ).setNombre(name);
+                    }
+                    break;
+                }
+                case 6: {
+                    if (jugador.isEmpty()) {
+                        System.out.println("No Hay Jugadores");
+                    } else {
+                        String salida = "";
+                        for (Object temp : jugador) {
+                            if (temp instanceof Jugador) {
+                                salida += jugador.indexOf(temp) + " - " + temp + "\n";
+                            }
+                        }
+                        System.out.println(salida);
+                        System.out.println("Indice de Jugador a remover: ");
+                        int indice = lea.nextInt();
+                        jugador.remove(indice);
+                    }
+                    break;
+                }
+                case 7: {
+                    if (jugador.isEmpty() ){
+                        System.out.println("No hay jugadores");
+                    }else{
+                        String salida = "";
+                        for (Object temp : jugador) {
+                            if (temp instanceof Jugador) {
+                                salida += jugador.indexOf(temp) + " - " + temp + "\n";
+                            }
+                        }
+                        System.out.println(salida);
+                        System.out.print("Indice de Jugador a demostrar todo: ");
+                        int indice = lea.nextInt();
+                        String temp = jugador.indexOf(indice) + " - " + ( (Jugador) jugador.get(indice) ).getNombre();
+                        System.out.println(temp);
+                        System.out.println(((Jugador) jugador.get(indice)).listarCartas());
+                        System.out.println(((Jugador) jugador.get(indice)).listarTorres());
+                    }
+                    break;
+                }
+                case 8: {
+                    if (jugador.isEmpty()) {
+                        System.out.println("No hay jugadores");
+                    } else {
+                        String salida = "";
+                        for (Object temp : jugador) {
+                            if (temp instanceof Jugador) {
+                                salida += jugador.indexOf(temp) + " - " + temp + "\n";
+                            }
+                        }
+                        System.out.println(salida);
+                    }
+                    break;
+                }
+                case 9: {
+                    if (jugador.isEmpty() ){
+                        System.out.println("No hay jugadores");
+                    }else{
+                        String salida = "";
+                        for (Object temp : jugador) {
+                            if (temp instanceof Jugador) {
+                                salida += jugador.indexOf(temp) + " - " + temp + "\n";
+                            }
+                        }
+                        System.out.println(salida);
+                        System.out.print("Indice de Jugador: ");
+                        int indice1 = lea.nextInt();
+                        if ( ( (Jugador) jugador.get(indice1) ).getArcherTowerCant() == 0) {
+                            System.out.println("No tiene Arqueras");
+                        }else {
+                            System.out.println( ((Jugador) jugador.get(indice1) ).listarArqueras() );
+                            System.out.println();
+                            System.out.print("Indice a remover: ");
+                            int indice2 = lea.nextInt();
+                            if ( ( (Jugador) jugador.get(indice1) ).verifyArcher(indice2) == true) {
+                                ((Jugador) jugador.get(indice1)).getTowers().remove(indice2);
+                                System.out.println("Adios mi Reina");
+                            }
+                        }
+                    }
+                    break;
+                }
+                case 10: {
+                    if (jugador.isEmpty()) {
+                        System.out.println("No hay jugadores");
+                    } else {
+                        String salida = "";
+                        for (Object temp : jugador) {
+                            if (temp instanceof Jugador) {
+                                salida += jugador.indexOf(temp) + " - " + temp + "\n";
+                            }
+                        }
+                        System.out.println(salida);
+                        System.out.print("Indice de Jugador: ");
+                        int indice1 = lea.nextInt();
+                        if (((Jugador) jugador.get(indice1)).getKingTowerCant() == 0) {
+                            System.out.println("No tiene Rey");
+                        } else {
+                            System.out.println(((Jugador) jugador.get(indice1)).listarRey());
+                            System.out.println();
+                            System.out.print("Indice a remover: ");
+                            int indice2 = lea.nextInt();
+                            if ( ( (Jugador) jugador.get(indice1) ).verifyKing(indice2) == true) {
+                                ((Jugador) jugador.get(indice1)).getTowers().remove(indice2);
+                                System.out.println("Adios mi Rey");
+                            }else{
+                                System.out.println("Esa es una arquera");
+                            }
+                        }
+                    }
+                }
                 case 13: {
                     if (jugador.isEmpty()) {
                         System.out.println("No Hay Jugadores");
@@ -204,13 +411,12 @@ public class Lab3P2_RigobertoBarahona {
                         System.out.println(salida);
                         System.out.print("Ingrece indice de Jugador a listar cartas: ");
                         int indice = lea.nextInt();
-                        System.out.println( ((Jugador) jugador.get(indice)).listarCartas()) ;
+                        System.out.println(((Jugador) jugador.get(indice)).listarCartas());
                     }
                     break;
                 }
                 default: {
                     flag = false;
-                    System.out.println("epico");
                     break;
                 }
             } //Switch
